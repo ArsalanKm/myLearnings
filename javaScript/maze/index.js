@@ -1,9 +1,12 @@
 const { Engine, Render, Runner, World, Bodies } = Matter;
 
-const cells = 3;
+const cells = 5;
 const width = 600;
 const height = 600;
 const engine = Engine.create();
+
+const unitLenght = width / cells;
+const unitHeight = height / cells;
 
 const { world } = engine;
 
@@ -72,7 +75,7 @@ const stepThroughCell = (row, column) => {
 
   // For each neighbor
   for (let neighbor of neighbors) {
-    const [nextRow, nextColumn] = neighbor;
+    const [nextRow, nextColumn, direction] = neighbor;
 
     // see if the neighbor is out of the bounds
     if (
@@ -84,11 +87,53 @@ const stepThroughCell = (row, column) => {
       continue;
 
     // if we have visited that neighbor, continue to next neghbor
-    if (grid[row][column]) continue;
+    if (grid[nextRow][nextColumn]) continue;
 
     //   remove the wall from the horizental either vertical
+    if (direction === "left") {
+      verticals[row][column - 1] = true;
+    } else if (direction === "right") {
+      verticals[row][column] = true;
+    } else if (direction === "up") {
+      horizentals[row - 1][column] = true;
+    } else if (direction === "down") {
+      horizentals[row][column] = true;
+    }
+    stepThroughCell(nextRow, nextColumn);
   }
   // Visit that next cell
 };
 
-stepThroughCell(1, 1);
+stepThroughCell(startRow, startColumn);
+
+horizentals.forEach((row, rowIndex) => {
+  row.forEach((open, columnIndex) => {
+    if (open) return;
+    const wall = Bodies.rectangle(
+      columnIndex * unitLenght + unitLenght / 2,
+      rowIndex * unitLenght + unitLenght,
+      unitLenght,
+      10,
+      {
+        isStatic: true,
+      }
+    );
+    World.add(world, wall);
+  });
+});
+
+verticals.forEach((row, rowIndex) => {
+  row.forEach((open, columnIndex) => {
+    if (open) return true;
+    const wall = Bodies.rectangle(
+      columnIndex * unitLenght + unitLenght,
+      rowIndex * unitLenght + unitLenght / 2,
+      10,
+      unitLenght,
+      {
+        isStatic: true,
+      }
+    );
+    World.add(world, wall);
+  });
+});

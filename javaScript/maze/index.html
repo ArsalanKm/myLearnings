@@ -2,17 +2,36 @@
 <html lang="en">
   <head>
     <style>
-      body{
+      body {
         margin: 0;
       }
+      .hidden {
+        display: none !important;
+      }
+      h1 {
+        color: white;
+        font-size: 36px;
+      }
+      .winner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 2;
+        height: vh;
+        width: 100vw;
+      }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>maze</title>
   </head>
   <body>
+    <div class="winner hidden">
+      <h1>you win</h1>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>

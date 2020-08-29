@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87b2374e-5612-4a4a-be9a-91886cda1d38" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/testing.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../DataStructureAndAlgorithm/array.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ecomm/routes/admin/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecomm/routes/admin/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ecomm/routes/admin/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecomm/routes/admin/validator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ecomm/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ecomm/users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ecomm/views/admin/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ecomm/views/admin/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HIDASH/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/HIDASH/index.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598680176337</updated>
-      <workItem from="1598680177364" duration="496000" />
+      <workItem from="1598680177364" duration="1697000" />
     </task>
     <servers />
   </component>

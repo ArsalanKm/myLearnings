@@ -1,16 +1,24 @@
 import React, {useState, useEffect, useRef} from "react";
 
 
-const Dropdown = ({options, selected, setSelected}) => {
+const Dropdown = ({options, selected, setSelected,label}) => {
     const [open, setOpen] = useState(false)
 
     const ref = useRef()
     useEffect(() => {
-        document.body.addEventListener('click', (event) => {
+        const onBodyclick = (event) => {
             if (ref?.current?.contains(event.target))
                 return
-                setOpen(false)
-        })
+            setOpen(false)
+        }
+
+        document.body.addEventListener('click', onBodyclick)
+
+        return ()=>{
+            document.body.removeEventListener('click',onBodyclick)
+
+        }
+
     }, [])
     const renderedOptions = options.map(option => {
         if (option.value === selected.value) return null
@@ -26,7 +34,7 @@ const Dropdown = ({options, selected, setSelected}) => {
         <div ref={ref} className="ui form">
             <div className="field">
                 <label className="label">
-                    Selected Color
+                    {label}
                 </label>
                 <div onClick={() => setOpen(!open)}
                      className={`ui selection dropdown ${open ? 'visible active' : ''}`}>

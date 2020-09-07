@@ -3,7 +3,8 @@ import Accordion from "./components/Accordion";
 import Search from "./components/search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
-
+import Route from "./components/Route";
+import Header from "./components/Header";
 const items = [
     {
         title: 'what is react ?',
@@ -34,25 +35,34 @@ const options = [
         value: 'blue'
     },
 ]
+
+
 export default () => {
     const [selected, setSelected] = useState(options[0])
     // const [showDropdown,setShowDropdown]=useState(true)
 
+
     return (
-    <div>
-    {/*    <button onClick={()=>setShowDropdown(!showDropdown)}>*/}
-    {/*        Toggle dropdown*/}
-    {/*    </button>*/}
-    {/*    <div>*/}
-    {/*        {showDropdown?*/}
-    {/*        <Dropdown*/}
-    {/*            selected={selected}*/}
-    {/*            setSelected={setSelected}*/}
-    {/*            options={options}*/}
-    {/*        />*/}
-    {/*        :null}*/}
-    {/*    </div>*/}
-    {/*</div>)*/}
-    <Translate/>
-    </div>)
-    }
+        <div>
+            <Header/>
+            <Route path="/">
+                <Accordion items={items}/>
+            </Route>
+            <Route path="/list">
+                <Search/>
+            </Route>
+            <Route path="/dropdown">
+                <Dropdown
+                label="select a color"
+                options={options}
+                selected={selected}
+                setSelected={setSelected}
+                />
+            </Route>
+
+            <Route path="/translate">
+            <Translate/>
+            </Route>
+
+        </div>)
+}

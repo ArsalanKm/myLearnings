@@ -29,7 +29,7 @@ const Convert = ({language, text}) => {
         }
         doTranslation()
 
-    }, [language, debouncedText])
+    }, [language, debouncedText ])
 
     return (
         <div>

@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
-import authRecuer from './authReducer'
+import authReducer from './authReducer'
 
 export default combineReducers({
-    auth: () => authRecuer
+    auth:authReducer
 })

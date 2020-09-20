@@ -20,18 +20,30 @@ class GoogleAuth extends React.Component {
 
 
     onAuthChange = (isSignedIn) => {
+
         if (isSignedIn)
-            this.props.signIn()
+            this.props.signIn(this.auth.currentUser.get().getId())
         else
             this.props.signOut()
+
+
     }
+
+    onSignInClick = () => {
+        this.auth.signIn();
+    };
+
+    onSignOutClick = () => {
+        this.auth.signOut();
+    };
 
     renderAuthButton() {
         if (this.props.isSignedIn === null)
             return null
-        else if (this.props.isSignedIn)
+        else if (this.props.isSignedIn === true)
             return (
-                <button onClick={() => this.auth.signOut()} className="ui red google button">
+                <button onClick={this.onSignOutClick}
+                        className="ui red google button">
                     <i className="google icon">
 
                     </i>
@@ -39,7 +51,8 @@ class GoogleAuth extends React.Component {
                 </button>
             )
         else return (
-                <button onClick={() => this.auth.signIn()} className="ui red google button">
+                <button onClick={this.onSignInClick}
+                        className="ui red google button">
                     <i className="google icon">
 
                     </i>
@@ -52,7 +65,6 @@ class GoogleAuth extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props.isSignedIn)}
                 {this.renderAuthButton()}
             </div>
         )
@@ -60,9 +72,9 @@ class GoogleAuth extends React.Component {
 
 }
 
-const mapToProps = (state) => {
- return {   isSignedIn:state.auth.isSignedIn}
+const mapStateToProps = (state) => {
+    return {isSignedIn: state.auth.isSignedIn}
 
 }
 
-export default connect(mapToProps, {signIn, signOut})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth)

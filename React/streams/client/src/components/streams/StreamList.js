@@ -17,9 +17,9 @@ class StreamList extends React.Component {
                           className="ui button primary">
                         Edit
                     </Link>
-                    <button className="ui button negative">
+                    <Link to={`/streams/delete/${stream.id}`} className="ui button negative">
                         Delete
-                    </button>
+                    </Link>
 
                 </div>
             )
@@ -52,7 +52,7 @@ class StreamList extends React.Component {
         if (this.props.isSignedIn) {
             return (
                 <div style={{textAlign: 'right'}}>
-                    <Link to='/streams/new1221' className="ui button primary">
+                    <Link to='/streams/new' className="ui button primary">
                         Create Stream
                     </Link>
                 </div>
